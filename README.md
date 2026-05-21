@@ -1,3 +1,5 @@
+> ⚠️ **Mirror** — This repository is mirrored from [GitLab](https://gitlab.com/opensecdevops/osdo). Please submit issues and merge requests there.
+
 # OSDO — Open SecDevOps Framework
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
