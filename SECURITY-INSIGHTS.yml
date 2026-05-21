@@ -1,0 +1,64 @@
+header:
+  schema-version: "1.0.0"
+  expiration-date: "2027-06-30T00:00:00.000Z"
+  last-updated: "2026-04-07T00:00:00.000Z"
+  url: https://github.com/opensecdevops/osdo/blob/main/SECURITY-INSIGHTS.yml
+
+project-lifecycle:
+  status: active
+  roadmap: https://github.com/opensecdevops/osdo/blob/main/ROADMAP.md
+  bug-fixes-only: false
+  core-maintainers:
+    - https://github.com/opensecdevops
+
+contribution-policy:
+  accepts-pull-requests: true
+  accepts-automated-pull-requests: true
+  automated-tools-list:
+    - automated-tool: dependabot
+      action: allowed
+    - automated-tool: renovate
+      action: allowed
+  contributing-guide: https://github.com/opensecdevops/osdo/blob/main/CONTRIBUTING.md
+  code-of-conduct: https://github.com/opensecdevops/osdo/blob/main/CODE_OF_CONDUCT.md
+
+documentation:
+  - https://github.com/opensecdevops/osdo/blob/main/GOVERNANCE.md
+  - https://github.com/opensecdevops/osdo/blob/main/CHANGELOG.md
+  - https://github.com/opensecdevops/osdo/blob/main/SECURITY.md
+
+distribution-points:
+  - https://npmjs.com/package/@osdo/cli
+  - https://github.com/opensecdevops/osdo/releases
+
+security-testing:
+  - tool-type: sast
+    tool-name: Semgrep
+    tool-version: latest
+    integration: CI/CD (GitHub Actions — osdo-sast action)
+    tool-rulesets:
+      - p/security-audit
+      - p/owasp-top-ten
+  - tool-type: sca
+    tool-name: OSV-Scanner
+    integration: CI/CD (GitHub Actions — osdo-sca action)
+  - tool-type: secret-detection
+    tool-name: Gitleaks
+    integration: CI/CD (GitHub Actions — osdo-secrets-scan action)
+  - tool-type: sbom
+    tool-name: Syft/CycloneDX
+    integration: CI/CD on release (GitHub Actions — osdo-sbom action)
+  - tool-type: container-scanning
+    tool-name: Trivy
+    integration: CI/CD (GitHub Actions — osdo-container-scan action)
+
+security-contacts:
+  - type: email
+    value: security@opensecdevops.org
+  - type: url
+    value: https://github.com/opensecdevops/osdo/security/advisories
+
+vulnerability-reporting:
+  accepts-vulnerability-reports: true
+  bug-bounty: false
+  security-policy: https://github.com/opensecdevops/osdo/blob/main/SECURITY.md
