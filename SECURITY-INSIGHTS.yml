@@ -10,6 +10,7 @@ project-lifecycle:
   bug-fixes-only: false
   core-maintainers:
     - https://github.com/Spectertj
+    - https://github.com/GoldraK
 
 contribution-policy:
   accepts-pull-requests: true
