@@ -3,11 +3,15 @@
 # OSDO — Open SecDevOps Framework
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/0/badge)](https://www.bestpractices.dev/projects/0)
-[![OWASP](https://img.shields.io/badge/OWASP-Tool%20Project-orange)](https://owasp.org)
 [![Version](https://img.shields.io/badge/version-2.0.0-green.svg)](./CHANGELOG.md)
 
-**OSDO (Open SecDevOps)** is an open-source, security-first DevOps framework that provides a complete pipeline generation, security scanning, and compliance automation system. It consists of an **App** (the brain that creates and manages pipeline packages) and a **CLI** (the interface that developers use daily).
+**OSDO (Open SecDevOps)** is an open-source, security-first DevOps framework that provides pipeline generation, security scanning, policy enforcement, compliance evidence and secure software-delivery automation. It consists of an **App** (the brain that creates and manages pipeline packages) and a **CLI** (the interface that developers use daily).
+
+**Institutional stewardship:** The OSDO Project is stewarded by **Hacker Dreams** to provide continuity beyond any individual contributor. Technical authority is exercised through the project governance and maintainer processes.
+
+> OSDO integrates with and maps controls to third-party projects and standards, but does not claim certification, endorsement or foundation-hosted status unless that status is explicitly granted and verifiable.
+
+See [PROJECT_CHARTER.md](./PROJECT_CHARTER.md), [GOVERNANCE.md](./GOVERNANCE.md), [MAINTAINERS.md](./MAINTAINERS.md) and [RECOGNITION.md](./RECOGNITION.md).
 
 ---
 
@@ -66,61 +70,34 @@
 ### Path 1: CLI Only (5 minutes)
 
 ```bash
-# Install
 npm install -g @osdo/cli
-
-# Initialize project (generates pipeline + security config)
 cd my-project
 osdo init
-
-# Run security scan locally
 osdo scan
-# → Semgrep (SAST) + OSV-Scanner (SCA) + Gitleaks (Secrets)
-
-# Generate compliance report
 osdo certify
-# → Maps results to OWASP Top 10 / SLSA / OpenSSF
-
-# Push — pipeline runs automatically in GitHub Actions
 git add . && git commit -m "feat: add OSDO security pipeline" && git push
 ```
 
 ### Path 2: CLI + App (Full Experience)
 
 ```bash
-# Install CLI
 npm install -g @osdo/cli
-
-# Start the App (package registry + dashboard)
 cd osdo-app && docker-compose up -d
-# → http://localhost:8000
-
-# Connect CLI to App
 osdo app login --url http://localhost:8000
-
-# Download pipeline packages/templates
 osdo app pull
-
-# Initialize with App templates (richer options)
 osdo init --from-app
-
-# Scan & push results to dashboard
 osdo scan
 osdo app push
-
-# Deploy infrastructure if package requires it
 osdo deploy --platform kubernetes
 ```
 
 ### Path 3: GitHub Actions (CI/CD Pipeline)
 
 ```yaml
-# .github/workflows/security.yml
 name: OSDO Security Pipeline
 on: [push, pull_request]
 
 jobs:
-  # Option A: Use individual actions (maximum flexibility)
   sast:
     runs-on: ubuntu-latest
     steps:
@@ -135,7 +112,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: opensecdevops/osdo-sca@v2
 
-  # Option B: Use complete workflow (convenience)
   security:
     uses: opensecdevops/osdo-workflows/.github/workflows/osdo-framework.yml@v2
     with:
@@ -165,9 +141,9 @@ jobs:
 | **OSDO Workflows** | 10 reusable security workflows for GitHub Actions | [`osdo-workflows`](https://github.com/opensecdevops/osdo-workflows) |
 | **OSDO Starter** | Pre-configured project templates | [`osdo-starter`](https://github.com/opensecdevops/osdo-starter) |
 
-### Individual Actions (published from osdo-actions)
+### Individual Actions
 
-Users reference these individually for maximum flexibility: `uses: opensecdevops/<action>@v2`
+Users reference these individually for maximum flexibility: `uses: opensecdevops/<action>@v2`.
 
 | Action | Category | Tools |
 |--------|----------|-------|
@@ -190,38 +166,42 @@ Users reference these individually for maximum flexibility: `uses: opensecdevops
 
 ---
 
-## 📋 Standards & Certifications
+## 📋 Standards, mappings and external assurance
 
-OSDO helps organizations achieve compliance with:
+OSDO implements or maps controls against several software-security and delivery ecosystems:
 
-| Standard | Coverage |
+| Standard / ecosystem | OSDO usage |
 |----------|----------|
-| **OWASP Top 10** | Full SAST/DAST coverage mapping |
-| **SLSA** | Build provenance and supply chain integrity |
-| **OpenSSF Scorecard** | Automated best practices scoring |
-| **CIS Benchmarks** | Container and infrastructure hardening |
-| **NIST SSDF** | Secure Software Development Framework |
+| **OWASP** | Security-control and vulnerability-category mappings |
+| **SLSA** | Build provenance and software supply-chain integrity |
+| **OpenSSF Scorecard** | Automated open-source security posture analysis |
+| **CIS Benchmarks** | Container and infrastructure hardening references |
+| **NIST SSDF** | Secure software-development practice mapping |
 
-### Framework Certification Targets
+These mappings are **not equivalent to third-party certification or endorsement**.
 
-- [ ] CNCF Sandbox Project
-- [ ] OWASP Tool Project
-- [ ] Linux Foundation Project
-- [ ] OpenSSF Best Practices Badge
+External assurance and recognition targets are maintained in [RECOGNITION.md](./RECOGNITION.md), including OpenSSF Best Practices, Scorecard targets, interoperability evidence and possible future ecosystem recognition.
 
 ---
 
+## 🏛️ Project governance
+
+- **Institutional steward:** Hacker Dreams
+- **Project governance:** [GOVERNANCE.md](./GOVERNANCE.md)
+- **Project charter:** [PROJECT_CHARTER.md](./PROJECT_CHARTER.md)
+- **Maintainers:** [MAINTAINERS.md](./MAINTAINERS.md)
+- **Adopters:** [ADOPTERS.md](./ADOPTERS.md)
+- **External assurance:** [RECOGNITION.md](./RECOGNITION.md)
+
+OSDO is intentionally structured so project continuity does not depend on a single individual while historical attribution remains preserved.
+
 ## 🔒 Security
 
-See [SECURITY.md](./SECURITY.md) for our security policy and responsible disclosure process.
-
-## 🏛️ Governance
-
-See [GOVERNANCE.md](./GOVERNANCE.md) for maintainers, decision-making process, and release cadence.
+See [SECURITY.md](./SECURITY.md) for the security policy and responsible disclosure process.
 
 ## 🤝 Contributing
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines including conventional commits and PR process.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for contribution requirements, including the DCO/contribution-signoff process where enforced.
 
 ## 📄 License
 
@@ -229,4 +209,4 @@ Apache License 2.0 — see [LICENSE](./LICENSE).
 
 ## 📊 Changelog
 
-See [CHANGELOG.md](./CHANGELOG.md). This project adheres to [Semantic Versioning](https://semver.org/) and [Keep a Changelog](https://keepachangelog.com/).
+See [CHANGELOG.md](./CHANGELOG.md). This project follows Semantic Versioning and Keep a Changelog.

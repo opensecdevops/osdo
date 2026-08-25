@@ -1,7 +1,7 @@
 header:
   schema-version: "1.0.0"
   expiration-date: "2027-06-30T00:00:00.000Z"
-  last-updated: "2026-04-07T00:00:00.000Z"
+  last-updated: "2026-08-25T00:00:00.000Z"
   url: https://github.com/opensecdevops/osdo/blob/main/SECURITY-INSIGHTS.yml
 
 project-lifecycle:
@@ -9,7 +9,7 @@ project-lifecycle:
   roadmap: https://github.com/opensecdevops/osdo/blob/main/ROADMAP.md
   bug-fixes-only: false
   core-maintainers:
-    - https://github.com/opensecdevops
+    - https://github.com/Spectertj
 
 contribution-policy:
   accepts-pull-requests: true
@@ -23,7 +23,11 @@ contribution-policy:
   code-of-conduct: https://github.com/opensecdevops/osdo/blob/main/CODE_OF_CONDUCT.md
 
 documentation:
+  - https://github.com/opensecdevops/osdo/blob/main/PROJECT_CHARTER.md
   - https://github.com/opensecdevops/osdo/blob/main/GOVERNANCE.md
+  - https://github.com/opensecdevops/osdo/blob/main/MAINTAINERS.md
+  - https://github.com/opensecdevops/osdo/blob/main/ROADMAP.md
+  - https://github.com/opensecdevops/osdo/blob/main/RECOGNITION.md
   - https://github.com/opensecdevops/osdo/blob/main/CHANGELOG.md
   - https://github.com/opensecdevops/osdo/blob/main/SECURITY.md
 
