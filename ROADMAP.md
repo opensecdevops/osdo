@@ -22,9 +22,10 @@ OSDO v2 remains the stable framework line focused on security-first software del
 - [x] Establish Hacker Dreams as institutional steward
 - [x] Publish project charter
 - [x] Publish explicit governance and maintainer model
+- [x] Maintain more than one active core maintainer
 - [x] Publish adopter registry
 - [x] Separate third-party alignment from certification/endorsement claims
-- [ ] Expand active maintainer coverage beyond a single core maintainer
+- [ ] Expand maintainer coverage across additional technical domains
 - [ ] Establish documented technical working groups as contributor activity grows
 
 ### Priority C — Security and supply-chain assurance
