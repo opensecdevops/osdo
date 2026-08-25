@@ -1,57 +1,128 @@
 # Gobernanza de OSDO
 
-## Mantenedores
+OSDO es un proyecto open source con **Hacker Dreams** como *institutional steward*.
 
-| Nombre                    | GitHub               | Área de responsabilidad          |
-|---------------------------|----------------------|----------------------------------|
-| [Nombre del Mantenedor]   | [github-username]    | Core framework, CLI, releases    |
-| [Nombre del Mantenedor]   | [github-username]    | osdo-actions, CI/CD pipelines    |
-| [Nombre del Mantenedor]   | [github-username]    | Documentación, comunidad         |
-| [Nombre del Mantenedor]   | [github-username]    | Seguridad, SAST/SCA/secrets      |
+El stewardship institucional existe para asegurar continuidad, custodia de la identidad del proyecto, coordinación externa y sostenibilidad a largo plazo. No convierte OSDO en un proyecto personal ni elimina la autoridad técnica de sus mantenedores.
+
+## Principios de gobernanza
+
+1. **Open source first** — OSDO se desarrolla públicamente y sus contribuciones se rigen por la licencia Apache-2.0 y el proceso de contribución del proyecto.
+2. **Institutional continuity** — Hacker Dreams actúa como steward institucional para evitar que la continuidad del proyecto dependa de una sola persona.
+3. **Technical merit** — las decisiones técnicas se toman por los mantenedores según mérito, evidencia, seguridad, compatibilidad y sostenibilidad.
+4. **Transparent decisions** — los cambios relevantes deben quedar registrados mediante issues, merge requests/pull requests, RFCs o documentación equivalente.
+5. **No implied endorsement** — OSDO puede implementar, mapear o alinearse con estándares y proyectos externos sin afirmar certificación, afiliación o endorsement cuando no exista formalmente.
+6. **Attribution is preserved** — la contribución histórica de personas y organizaciones se mantiene mediante el historial de Git, documentación y registros del proyecto.
+
+## Steward institucional
+
+**Hacker Dreams** es el steward institucional de OSDO.
+
+Responsabilidades del steward:
+
+- custodiar la continuidad institucional del proyecto;
+- mantener la identidad pública y el posicionamiento de OSDO;
+- coordinar relaciones con comunidades, fundaciones y organismos externos;
+- asegurar que exista una estructura de mantenimiento activa;
+- facilitar infraestructura, dominios, cuentas y recursos cuando corresponda;
+- proteger al proyecto frente a abandono, captura por un único contribuidor o uso que induzca a error sobre su estatus externo;
+- aprobar cambios de gobernanza institucional, sin sustituir la revisión técnica de los maintainers.
+
+El steward **no puede apropiarse de contribuciones de terceros ni reescribir su autoría**. La licencia y el historial del repositorio siguen siendo la fuente de verdad para atribución y derechos sobre contribuciones.
+
+## Dirección técnica
+
+La autoridad técnica reside en los maintainers activos listados en [MAINTAINERS.md](./MAINTAINERS.md).
+
+### Project Lead
+
+El Project Lead coordina roadmap, releases, RFCs y representación técnica del proyecto. El rol no implica propiedad personal sobre OSDO.
+
+El Project Lead actual es:
+
+| Nombre | GitHub | Rol |
+|---|---|---|
+| Antonio Juanilla | [@Spectertj](https://github.com/Spectertj) | Project Lead / Core Maintainer |
+
+Los cambios en este rol deben documentarse mediante PR/MR y quedar aprobados por el steward institucional y la mayoría de maintainers activos.
 
 ## Proceso de decisiones
 
-- **Cambios menores** (bugfixes, docs): lazy consensus — merge sin objeción en 72 horas.
-- **Features nuevas**: issue abierto con label `proposal`, mínimo 5 días de discusión antes de comenzar la implementación.
-- **Breaking changes**: RFC en GitHub Discussions, mínimo 7 días de discusión, requiere aprobación explícita de al menos 2 mantenedores.
-- **Seguridad del propio framework**: fast-track por mantenedores core sin esperar consensus general. Ver sección "Política de seguridad del propio framework" más abajo.
+- **Cambios menores** (bugfixes, documentación, mantenimiento): *lazy consensus*; pueden fusionarse sin objeción después de 72 horas cuando no exista riesgo material.
+- **Features nuevas**: issue o propuesta pública, mínimo 5 días de discusión cuando el cambio afecte interfaces, comportamiento o arquitectura compartida.
+- **Breaking changes**: RFC público, mínimo 7 días de discusión y aprobación explícita de al menos 2 maintainers activos. Si solo existe un maintainer activo, se requiere además revisión del steward institucional antes de merge.
+- **Cambios de gobernanza o identidad institucional**: requieren aprobación explícita del steward y revisión pública.
+- **Seguridad del propio framework**: fast-track por maintainers core cuando exista riesgo material; debe quedar documentado posteriormente.
+
+Ninguna persona individual tiene veto permanente sobre el avance del proyecto por ausencia o inactividad.
+
+## RFC (Request for Comments)
+
+Se requiere RFC para:
+
+- breaking changes;
+- cambios en el modelo de arquitectura de OSDO;
+- incorporación de nuevos dominios principales;
+- cambios en el modelo de compatibilidad;
+- nuevas especificaciones de política, evidencia, autonomía o delivery loops;
+- cambios de gobernanza técnica que afecten a toda la comunidad.
+
+Proceso:
+
+1. Abrir un issue con prefijo `[RFC]` y la etiqueta correspondiente.
+2. Describir problema, motivación, propuesta, impacto, seguridad, compatibilidad y alternativas consideradas.
+3. Mantener un período mínimo de discusión de 7 días, salvo incidentes de seguridad.
+4. Obtener las aprobaciones requeridas por esta gobernanza.
+5. Implementar mediante rama o PR/MR dedicada.
+6. Registrar la decisión y, cuando corresponda, el impacto en `CHANGELOG.md`.
 
 ## Cadencia de releases
 
-| Tipo   | Cadencia                                               |
-|--------|--------------------------------------------------------|
-| Patch  | Cada 4 semanas (o antes si hay vulnerabilidad crítica) |
-| Minor  | Trimestral (Q1 / Q2 / Q3 / Q4)                        |
-| Major  | Cuando los breaking changes acumulados lo justifican   |
+| Tipo | Cadencia orientativa |
+|---|---|
+| Patch | Cada 4 semanas o antes si existe vulnerabilidad crítica |
+| Minor | Trimestral cuando exista contenido suficiente |
+| Major | Cuando los breaking changes acumulados y el modelo de arquitectura lo justifiquen |
 
-Los releases de parche de seguridad fuera de ciclo están permitidos en cualquier momento y no requieren esperar al ciclo regular.
+Las fechas son objetivos operativos, no obligaciones contractuales.
 
-## Cómo convertirse en mantenedor
+## Cómo convertirse en maintainer
 
-1. Contribuciones consistentes durante más de 3 meses (código, revisiones, issues, documentación).
-2. Propuesta en GitHub Discussions con la contribución documentada y el área de responsabilidad propuesta.
-3. Voto positivo por mayoría simple de mantenedores actuales durante un período de 7 días.
-4. Incorporación a la tabla de mantenedores en este archivo mediante PR firmada por un mantenedor existente.
+1. Contribuciones consistentes y verificables al proyecto.
+2. Historial de revisiones técnicas y comportamiento conforme al Código de Conducta.
+3. Propuesta pública indicando área de responsabilidad.
+4. Aprobación por mayoría simple de maintainers activos.
+5. Actualización de `MAINTAINERS.md` mediante PR/MR.
 
-Un mantenedor puede declinar el rol en cualquier momento notificando al resto del equipo. Si un mantenedor lleva más de 6 meses sin actividad en el proyecto, podrá ser movido a estado "emérito" tras notificación previa.
+No existe un derecho automático a convertirse en maintainer por antigüedad, empleo o afiliación organizativa.
 
-## RFC (Request for Comments) — Proceso para Breaking Changes
+## Inactividad y estatus emérito
 
-1. Abrir un issue con el prefijo `[RFC]` y la label `breaking-change`.
-2. Describir el cambio propuesto, la motivación, el impacto esperado en usuarios y las alternativas consideradas.
-3. Período de discusión: mínimo 7 días desde la apertura del issue.
-4. El RFC necesita aprobación explícita (comentario o review aprobado) de al menos 2 mantenedores.
-5. Una vez aprobado, el RFC se implementa en una rama dedicada y se documenta en `CHANGELOG.md` con el número de issue del RFC.
-6. Los RFCs rechazados se cierran con la label `rfc-rejected` y una explicación de los motivos.
+Un maintainer puede declinar el rol en cualquier momento.
+
+Cuando un maintainer permanezca inactivo durante seis meses o más, los maintainers activos y el steward pueden moverlo a **Emeritus Maintainer** después de dejar constancia pública de la decisión.
+
+El estatus emérito:
+
+- preserva la atribución histórica;
+- no implica autoridad de aprobación sobre cambios actuales;
+- permite reincorporación mediante el mismo proceso usado para maintainers activos.
+
+## Conflictos de interés
+
+Los maintainers deben declarar conflictos de interés materiales cuando una decisión pueda beneficiar directamente a su empleador, empresa, cliente o proyecto comercial.
+
+La participación de una organización en OSDO no le concede control automático del roadmap.
 
 ## Política de seguridad del propio framework
 
-OSDO come su propia medicina: `osdo-sast`, `osdo-sca` y `osdo-secrets-scan` se ejecutan sobre el código de OSDO en cada PR. Los resultados son requisito para hacer merge y son visibles en el resumen de la PR.
+OSDO debe aplicar controles de seguridad sobre su propio proceso de desarrollo, incluyendo cuando corresponda SAST, SCA, secret scanning, SBOM, provenance, signing y policy enforcement.
 
-- Las vulnerabilidades del propio framework siguen el proceso de fast-track descrito en `SECURITY.md`.
-- Los parches de seguridad se publican fuera del ciclo regular de releases cuando la severidad es crítica o alta.
-- Ver `SECURITY.md` para la política completa de divulgación responsable, SLAs y contacto de seguridad.
+- Las vulnerabilidades siguen el proceso de `SECURITY.md`.
+- Los parches críticos pueden publicarse fuera de ciclo.
+- Los cambios de seguridad deben priorizar evidencia y reducción de riesgo sobre cadencias administrativas.
 
 ## Código de Conducta
 
-Todos los participantes en el proyecto OSDO están sujetos al `CODE_OF_CONDUCT.md`. Los reportes de conducta se gestionan a través de conduct@opensecdevops.org.
+Todos los participantes están sujetos a `CODE_OF_CONDUCT.md`.
+
+Los reportes se gestionan a través del canal indicado en dicho documento o en la política de seguridad correspondiente.
